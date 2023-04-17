@@ -270,6 +270,10 @@ class RequestTest extends BaseTest
             // Line folding is technically allowed, but deprecated.
             // We don't support it.
             ["new\r\n line"],
+            ["newline\n"],
+            ["\nnewline"],
+            ["newline\r\n"],
+            ["\r\nnewline"],
         ];
 
         for ($i = 0; $i <= 0xff; $i++) {
@@ -287,6 +291,7 @@ class RequestTest extends BaseTest
             }
 
             $tests[] = ["foo" . \chr($i) . "bar"];
+            $tests[] = ["foo" . \chr($i)];
         }
 
         return $tests;
